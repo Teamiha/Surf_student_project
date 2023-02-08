@@ -9,19 +9,19 @@
 /* Begin PBXBuildFile section */
 		4E20DC7E29914FAD000B74D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20DC7D29914FAD000B74D0 /* AppDelegate.swift */; };
 		4E20DC8029914FAD000B74D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20DC7F29914FAD000B74D0 /* SceneDelegate.swift */; };
-		4E20DC8229914FAD000B74D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20DC8129914FAD000B74D0 /* ViewController.swift */; };
 		4E20DC8729914FAE000B74D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E20DC8629914FAE000B74D0 /* Assets.xcassets */; };
 		4E20DC8A29914FAE000B74D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E20DC8829914FAE000B74D0 /* LaunchScreen.storyboard */; };
+		4E20DC9A2992A842000B74D0 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E20DC992992A842000B74D0 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E20DC7A29914FAD000B74D0 /* Surf_student_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Surf_student_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E20DC7D29914FAD000B74D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E20DC7F29914FAD000B74D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4E20DC8129914FAD000B74D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4E20DC8629914FAE000B74D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E20DC8929914FAE000B74D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E20DC8B29914FAE000B74D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E20DC992992A842000B74D0 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 		4E20DC95299150CE000B74D0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4E20DC8129914FAD000B74D0 /* ViewController.swift */,
+				4E20DC992992A842000B74D0 /* MainViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E20DC8229914FAD000B74D0 /* ViewController.swift in Sources */,
+				4E20DC9A2992A842000B74D0 /* MainViewController.swift in Sources */,
 				4E20DC7E29914FAD000B74D0 /* AppDelegate.swift in Sources */,
 				4E20DC8029914FAD000B74D0 /* SceneDelegate.swift in Sources */,
 			);
@@ -344,7 +344,6 @@
 				INFOPLIST_FILE = Surf_student_project/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,7 +370,6 @@
 				INFOPLIST_FILE = Surf_student_project/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
