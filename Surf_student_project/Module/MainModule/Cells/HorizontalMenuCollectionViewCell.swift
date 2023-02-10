@@ -20,14 +20,40 @@ class HorizontalMenuCollectionViewCell: UICollectionViewCell {
         return nameCategoryLabel
     }()
     
-    override var isSelected: Bool {
-        didSet {
-            
-            backgroundColor = self.isSelected ? .black : .white
-            nameCategoryLabel.textColor = self.isSelected ? .red : .black
-            
+    let testB: UIButton = {
+        let testB = UIButton()
+        testB.titleLabel?.textAlignment = .center
+        testB.setTitleColor(.black, for: .selected)
+        testB.titleLabel?.font = UIFont(name: "Arial Bold", size: 18)
+        testB.tintColor = .red
+        
+        testB.translatesAutoresizingMaskIntoConstraints = false
+       
+        testB.addTarget(self, action: #selector(buttonTaped), for: .touchUpInside)
+        
+        return testB
+    }()
+    
+    @objc func buttonTaped() {
+        if testB.isSelected == true {
+            testB.isSelected = false
+        } else {
+            testB.isSelected = true
         }
+        
+        
     }
+    
+//    override var isSelected: Bool {
+//        didSet {
+//
+//            backgroundColor = self.isSelected ? .black : .white
+//            nameCategoryLabel.textColor = self.isSelected ? .red : .black
+//
+//        }
+//    }
+    
+    
     
     
     override init(frame: CGRect) {
@@ -46,13 +72,14 @@ class HorizontalMenuCollectionViewCell: UICollectionViewCell {
         backgroundColor = .white
         layer.cornerRadius = 10
         
-        addSubview(nameCategoryLabel)
+//        addSubview(nameCategoryLabel)
+        addSubview(testB)
     }
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            nameCategoryLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameCategoryLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+            testB.centerXAnchor.constraint(equalTo: centerXAnchor),
+            testB.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
     

@@ -57,7 +57,8 @@ extension HorizontalMenuCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HorizontalMenuCollectionViewCell else
         { return UICollectionViewCell() }
-        cell.nameCategoryLabel.text = nameCategoryArray[indexPath.item]
+//        cell.nameCategoryLabel.text = nameCategoryArray[indexPath.item]
+        cell.testB.setTitle(nameCategoryArray[indexPath.item], for: .normal) 
         
         return cell
     }
