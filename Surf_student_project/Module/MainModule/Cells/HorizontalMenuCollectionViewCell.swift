@@ -10,78 +10,65 @@ import UIKit
 
 class HorizontalMenuCollectionViewCell: UICollectionViewCell {
     
-    let nameCategoryLabel: UILabel = {
-        let nameCategoryLabel = UILabel()
-        nameCategoryLabel.textAlignment = .center
-        nameCategoryLabel.textColor = .black
-        nameCategoryLabel.font = UIFont(name: "Arial Bold", size: 18)
+    //MARK: - Constants
+    
+    private let buttonNormalBackgroundColor = UIColor(red: 243/255, green: 243/255, blue: 245/255, alpha: 1.0)
+    private let buttonSelectBackgroundColor = UIColor(red: 49/255, green: 49/255, blue: 49/255, alpha: 1.0)
+    
+    //MARK: - Views
+    
+    lazy var categoryButton: UIButton = {
+        let categoryButton = UIButton()
+        categoryButton.titleLabel?.textAlignment = .center
+        categoryButton.setTitleColor(.black, for: .normal)
+        categoryButton.setTitleColor(.white, for: .selected)
+        categoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 14)
         
-        nameCategoryLabel.translatesAutoresizingMaskIntoConstraints = false
-        return nameCategoryLabel
+        categoryButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        categoryButton.addTarget(self, action: #selector(buttonTaped), for: .touchUpInside)
+        
+        return categoryButton
     }()
     
-    let testB: UIButton = {
-        let testB = UIButton()
-        testB.titleLabel?.textAlignment = .center
-        testB.setTitleColor(.black, for: .selected)
-        testB.titleLabel?.font = UIFont(name: "Arial Bold", size: 18)
-        testB.tintColor = .red
-        
-        testB.translatesAutoresizingMaskIntoConstraints = false
-       
-        testB.addTarget(self, action: #selector(buttonTaped), for: .touchUpInside)
-        
-        return testB
-    }()
+    //MARK: - Methods
     
     @objc func buttonTaped() {
-        if testB.isSelected == true {
-            testB.isSelected = false
+        if categoryButton.isSelected == true {
+            categoryButton.isSelected = false
+            backgroundColor = buttonNormalBackgroundColor
         } else {
-            testB.isSelected = true
+            categoryButton.isSelected = true
+            backgroundColor = buttonSelectBackgroundColor
+            
         }
-        
-        
     }
     
-//    override var isSelected: Bool {
-//        didSet {
-//
-//            backgroundColor = self.isSelected ? .black : .white
-//            nameCategoryLabel.textColor = self.isSelected ? .red : .black
-//
-//        }
-//    }
+    private func setupViews() {
+        backgroundColor = buttonNormalBackgroundColor
+        layer.cornerRadius = 10
+        addSubview(categoryButton)
+    }
     
-    
-    
-    
+    //MARK: - Lifecycle
+ 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setupViews()
         setConstraints()
+
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func setupViews() {
-        
-        backgroundColor = .white
-        layer.cornerRadius = 10
-        
-//        addSubview(nameCategoryLabel)
-        addSubview(testB)
-    }
+
+    //MARK: - Constraints
     
     private func setConstraints() {
         NSLayoutConstraint.activate([
-            testB.centerXAnchor.constraint(equalTo: centerXAnchor),
-            testB.centerYAnchor.constraint(equalTo: centerYAnchor)
+            categoryButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            categoryButton.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
-    
-    
 }

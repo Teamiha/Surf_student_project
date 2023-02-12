@@ -8,18 +8,21 @@
 import Foundation
 import UIKit
 
-protocol SelectCollectionViewItemProtocol: AnyObject {
-    func selectItem(index: IndexPath)
-}
+//protocol SelectCollectionViewItemProtocol: AnyObject {
+//    func selectItem(index: IndexPath)
+//}
 
 class HorizontalMenuCollectionView: UICollectionView  {
     
+    //MARK: - Constants
+    
+    private let nameCategoryArray = ["iOS", "Android", "Design", "QA", "Flutter", "PM"]
+    
+    //MARK: - Views
+
     private let categoryLayout = UICollectionViewFlowLayout()
     
-    private let nameCategoryArray = ["Test", "001001", "iOS", "ololololololo", "sss ++++ 333"]
-    
-    weak var cellDelegate: SelectCollectionViewItemProtocol?
-    
+    //MARK: - Lifecycle
     
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
         super.init(frame: .zero, collectionViewLayout: categoryLayout)
@@ -31,11 +34,13 @@ class HorizontalMenuCollectionView: UICollectionView  {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Private Methods
+    
     private func configure() {
         categoryLayout.minimumInteritemSpacing = 12
         categoryLayout.scrollDirection = .horizontal
         
-        backgroundColor = .purple
+        backgroundColor = .white
         translatesAutoresizingMaskIntoConstraints = false
         bounces = false
         showsHorizontalScrollIndicator = false
@@ -57,8 +62,8 @@ extension HorizontalMenuCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? HorizontalMenuCollectionViewCell else
         { return UICollectionViewCell() }
-//        cell.nameCategoryLabel.text = nameCategoryArray[indexPath.item]
-        cell.testB.setTitle(nameCategoryArray[indexPath.item], for: .normal) 
+        
+        cell.categoryButton.setTitle(nameCategoryArray[indexPath.item], for: .normal)
         
         return cell
     }
@@ -70,7 +75,6 @@ extension HorizontalMenuCollectionView: UICollectionViewDataSource {
 extension HorizontalMenuCollectionView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        cellDelegate?.selectItem(index: indexPath)
     }
 }
 
@@ -79,12 +83,11 @@ extension HorizontalMenuCollectionView: UICollectionViewDelegate {
 extension HorizontalMenuCollectionView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let categoryFont = UIFont(name: "Arial Bold", size: 18)
+        let categoryFont = UIFont.systemFont(ofSize: 14)
         let categoryAttributes = [NSAttributedString.Key.font : categoryFont as Any]
-        let categoryWidth = nameCategoryArray[indexPath.item].size(withAttributes: categoryAttributes).width + 20
+        let categoryWidth = nameCategoryArray[indexPath.item].size(withAttributes: categoryAttributes).width + 48
+        let categoryHeight = nameCategoryArray[indexPath.item].size(withAttributes: categoryAttributes).height + 24
         
-        
-        
-        return CGSize(width: categoryWidth, height: collectionView.frame.height)
+        return CGSize(width: categoryWidth, height: categoryHeight)
     }
 }

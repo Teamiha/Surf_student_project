@@ -9,20 +9,35 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    //MARK: - Constants
+    
+    private var contentSize: CGSize {
+        CGSize(width: view.frame.width, height: view.frame.height + 500)
+    }
+    
+    //MARK: - Views
+    
     private let horizontalMenu = HorizontalMenuCollectionView()
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white.withAlphaComponent(CGFloat(0))
-//        scrollView.frame = view.bounds
         scrollView.frame = CGRect(x: 0, y: 70, width: view.bounds.width, height: view.bounds.height)
         scrollView.contentSize = contentSize
         scrollView.bounces = false
       
         scrollView.showsVerticalScrollIndicator = false
-//        scrollView.contentOffset = CGPoint(x: 0, y: 400)
+
         
         return scrollView
+    }()
+    
+    private lazy var backgroundImage: UIImageView = {
+        let backgroundImage = UIImageView()
+        backgroundImage.image = UIImage(named: "backgroundImage")
+        backgroundImage.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+        
+        return backgroundImage
     }()
     
     private lazy var mainMenuView: UIView = {
@@ -42,47 +57,29 @@ class MainViewController: UIViewController {
         return footerMenu
     }()
     
-    
-   
-    
-    private var contentSize: CGSize {
-        CGSize(width: view.frame.width, height: view.frame.height + 500)
-    }
+    //MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .blue
+        view.addSubview(backgroundImage)
         view.addSubview(scrollView)
         scrollView.addSubview(mainMenuView)
         view.addSubview(footerMenu)
         mainMenuView.addSubview(horizontalMenu)
-        horizontalMenu.cellDelegate = self
         setConstraint()
-       
     }
-
 }
 
-extension MainViewController: SelectCollectionViewItemProtocol {
-    func selectItem(index: IndexPath) {
-        
-    }
-    
-    
-}
-
+//MARK: - Constraints
 
 extension MainViewController {
     private func setConstraint() {
         NSLayoutConstraint.activate([
             horizontalMenu.topAnchor.constraint(equalTo: mainMenuView.safeAreaLayoutGuide.topAnchor, constant: 200),
             horizontalMenu.leadingAnchor.constraint(equalTo: mainMenuView.leadingAnchor, constant: 20),
-            horizontalMenu.trailingAnchor.constraint(equalTo: mainMenuView.trailingAnchor, constant: -20),
+            horizontalMenu.trailingAnchor.constraint(equalTo: mainMenuView.trailingAnchor, constant: 0),
             horizontalMenu.heightAnchor.constraint(equalToConstant: 50),
-            
-        
-        
         ])
     }
-    
 }
